@@ -8,6 +8,12 @@ pipeline {
                   }
             }
             stage("Build") {
+                   agent {
+                        docker {
+                              image 'docker:latest'  // Docker image yang sudah ada Docker CLI di dalamnya
+                              args '-v /var/run/docker.sock:/var/run/docker.sock'  // Mount Docker socket dari host
+                        }
+                  }
                   steps {
                         script{
                               // menggunakan jenkins untuk build image
