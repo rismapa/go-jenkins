@@ -1,6 +1,8 @@
 pipeline {
       agent any
-
+      tools {
+            git 'Git' // Nama Git yang lo set di Global Tool Configuration
+      }
       stages {
             stage('Checkout') {
                   steps {
